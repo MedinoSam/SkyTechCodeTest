@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction} from "express";
 import { getMetadata } from "../clients/metaDataApi";
-import { error } from "console";
 import { parsedMovie } from "../utils/movieUtils";
 import { MovieParsed } from "../types/movie";
 
@@ -15,6 +14,6 @@ export const getMovies = (req: Request, res: Response, next: NextFunction) => {
             res.json(formatedMovies);
         })
         .catch(error => {
-            res.send(error);
+            res.json(error);
         }) 
 }
