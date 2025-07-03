@@ -2,7 +2,7 @@
 import express from 'express'
 
 import { Router, Request, Response } from 'express'
-import movieRouter from './routes/movieRoutes';
+import movieRouter from './controllers/movieController';
 
 
 const app = express();
