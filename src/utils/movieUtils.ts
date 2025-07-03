@@ -1,17 +1,17 @@
-import { Movie, MovieParsed } from "../types/movie";
+import { Movie, MovieParsed, Premio, Rating, Sinopse } from "../types/movie";
 import { numeralScale } from "../constants/movieConstants";
 
 export const parsedMovie = (movieOriginal: Movie):MovieParsed => {
     const parsed: MovieParsed = {
+        titulo: movieOriginal.titulo,
         ano: movieOriginal.ano,
         diretor: movieOriginal.diretor,
-        duracaoSegundos: convertMinutesToSeconds(movieOriginal.duracao),
         genero: movieOriginal.genero,
+        duracaoSegundos: convertMinutesToSeconds(movieOriginal.duracao),
+        notaIMDb: getImdbRating(movieOriginal.ratings),
         lucro: getProfit(movieOriginal.orcamento, movieOriginal.bilheteria),
         maiorPremiacao: getGreatherPrize(movieOriginal.premios),
-        notaIMDb: getImdbRating(movieOriginal.ratings),
-        sinopse: getSinopse(movieOriginal.sinopse),
-        titulo: movieOriginal.titulo
+        sinopse: getSinopse(movieOriginal.sinopse)
     }
     return parsed;
 }
@@ -28,7 +28,50 @@ const getProfit = (orcamento:string, bilheteria:string) => {
         console.error("erro: valores de orcamento e bilheteria nao podem ser nulos");
         return null;
     }
-    return String(boxOfficeValue - budgetValue);
+    return formaterNumberExtense(boxOfficeValue - budgetValue);
+}
+
+const formaterNumberExtense = (value: number): string => {
+    const result = new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        compactDisplay: "short",
+        maximumFractionDigits: 3
+    }).format(value);
+
+    return result
+        .replace("K", " mil")
+        .replace("M", " milhões")
+        .replace("B", " bilhões");
+}
+
+const getGreatherPrize = (prizes: Premio[]) => {
+    let biggestPrizeRelevance = -999999;
+    let biggestPrizeName = "";
+    prizes.forEach(function(prize) {
+        if (prize.relevancia > biggestPrizeRelevance) {
+            biggestPrizeRelevance = prize.relevancia;
+            biggestPrizeName = prize.nome;
+        }
+    });
+    return biggestPrizeName;
+}
+
+const getImdbRating = (ratings: Rating[]) => {
+    let IMDbValue: number = -1;
+    ratings.forEach(rating => {
+        if (rating.fonte === "IMDb") IMDbValue = rating.valor;
+    });
+
+    return IMDbValue;
+}
+
+const getSinopse = (sinopses: Sinopse[]) => {
+ 
+    const sinopseName: string =
+        sinopses.find(s => s.idioma === "pt-br")?.texto ??
+        sinopses.find(s => s.idioma === "en")?.texto ??
+        sinopses[0].texto;
+    return sinopseName;
 }
 
 const getNumberValue = (value:string) => {
