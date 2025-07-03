@@ -42,7 +42,7 @@ export interface MovieParsed {
     genero: string[];
     duracaoSegundos: number;
     notaIMDb: number;
-    lucro: string;
+    lucro: string | null;
     maiorPremiacao: string;
     sinopse: string;
 }
