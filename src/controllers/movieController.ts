@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getMovies } from "../services/movieService";
+import { getMoviesParsed } from "../services/movieService";
 
 const movieRouter = Router();
 
-movieRouter.get('/', getMovies)
+movieRouter.get('/', getMoviesParsed)
 
 export default movieRouter;
