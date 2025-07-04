@@ -31,7 +31,7 @@ export interface Premio {
     relevancia: number;
     }
 
-export interface GetMoviesResponse {
+export interface Movies {
     filmes: Movie[];
 }
 
@@ -46,3 +46,5 @@ export interface MovieParsed {
     maiorPremiacao: string;
     sinopse: string;
 }
+
+export const movies: Movie[] = [];
