@@ -1,20 +1,16 @@
-import { Request, Response, NextFunction} from "express";
 import { getMetadata } from "../clients/metaDataApi";
-import { parsedMovie } from "../utils/movieUtils";
+import { getParsedMovie } from "../utils/movieUtils";
 import { MovieParsed } from "../types/movie";
 
-export const getMoviesParsed = (res: Response) => {
-        let formatedMovies:MovieParsed[] = [];
+export const getMoviesParsedService = async (): Promise<MovieParsed[]> => {
 
-        getMetadata()
-        .then(originalMovies => {
-            originalMovies.filmes.forEach(originalMovie => {
-                const formatedMovie = parsedMovie(originalMovie);
-                formatedMovies.push(formatedMovie);
-            });
-            res.send(formatedMovies).status(200);
-        })
-        .catch(error => {
-            res.sendStatus(400);
-        })
+    const formatedMovies: MovieParsed[] = [];
+    const originalMovies = await getMetadata();
+
+    originalMovies.filmes.forEach(originalMovie => {
+        const formatedMovie = getParsedMovie(originalMovie);
+        formatedMovies.push(formatedMovie);
+    });
+
+    return formatedMovies;
 }
