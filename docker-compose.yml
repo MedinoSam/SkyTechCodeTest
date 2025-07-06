@@ -1,0 +1,10 @@
+services:
+  api:
+    container_name: api-movies
+    build: .
+    restart: always
+    ports:
+      - 4000:4000
+    env_file:
+      - .env
+      
