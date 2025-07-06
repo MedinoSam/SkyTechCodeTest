@@ -11,7 +11,6 @@ export const  getNumberWithScale = (value:string) => {
     const scale = NUMERAL_SCALE[value.split(' ')[1]]
 
     if(!numberValue) {
-        console.error("valor nulo! nao foi possivel encontrar o valor");
         return null;
     }
     return numberValue * scale;
@@ -21,7 +20,6 @@ export const getNumberValue = (value:string) => {
     // encontra valores float
     const matches = value.match(/[-+]?\d*\.?\d+/g);
     if (!matches){
-        console.error("valor nulo! nao foi possivel encontrar o valor");
         return null;
     }
 
