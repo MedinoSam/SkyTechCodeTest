@@ -5,7 +5,7 @@ import { MovieParsed } from "../types/movie";
 export const getMoviesParsedService = async (): Promise<MovieParsed[]> => {
 
     const formatedMovies: MovieParsed[] = [];
-    const originalMovies = await getMetadata();
+    const originalMovies = (await getMetadata()).data;
 
     originalMovies.filmes.forEach(originalMovie => {
         const formatedMovie = getParsedMovie(originalMovie);
