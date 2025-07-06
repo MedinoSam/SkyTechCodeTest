@@ -41,9 +41,9 @@ export interface MovieParsed {
     diretor: string;
     genero: string[];
     duracaoSegundos: number;
-    notaIMDb: number;
+    notaIMDb: number|null;
     lucro: string | null;
-    maiorPremiacao: string;
+    maiorPremiacao: string|null;
     sinopse: string;
 }
 
