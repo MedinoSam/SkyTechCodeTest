@@ -39,3 +39,8 @@ export const formaterNumberExtense = (value: number): string => {
         .replace("M", " milhões")
         .replace("B", " bilhões");
 }
+
+export const hasGenero = (generoFromQuery: string ,generoList: string[]) => {
+    
+    return !!generoList.find(element => element === generoFromQuery);
+}
