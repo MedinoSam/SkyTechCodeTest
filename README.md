@@ -95,7 +95,7 @@ Contribuições são bem-vindas! Basta abrir uma issue ou enviar um pull request
 ### 😋 Contato
 
 **Desenvolvedor:** Samuel Medino da Silva
-- [Linkedin](www.linkedin.com/in/samuelmedino)
+- [Linkedin](https://www.linkedin.com/in/samuelmedino)
 
 ---
 
