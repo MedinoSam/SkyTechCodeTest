@@ -79,8 +79,6 @@ A aplicação está configurada para rodar em AWS com:
 
 ## 🧹 Endpoints
 
-> ✏️ *Substitua os exemplos abaixo pelos seus endpoints reais.*
-
 - `GET /api/movies` – Lista os filmes parseados.
 - `GET /api/movies?Genero=generoName` – Filtra os fimles parseados de acordo com gênero.
 
@@ -97,7 +95,7 @@ Contribuições são bem-vindas! Basta abrir uma issue ou enviar um pull request
 ### 😋 Contato
 
 **Desenvolvedor:** Samuel Medino da Silva
-🔗 (www.linkedin.com/in/samuelmedino)
+- [Linkedin](www.linkedin.com/in/samuelmedino)
 
 ---
 
