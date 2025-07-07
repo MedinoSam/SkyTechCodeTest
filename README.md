@@ -72,7 +72,7 @@ A aplicação está configurada para rodar em AWS com:
 
 - **Elastic Load Balancer** para distribuir tráfego entre instâncias.
 - **Auto Scaling Group** para ajustar o número de instâncias com base na demanda.
-- Container Docker implantado em instâncias EC2 (ou ECS/EKS se aplicável).
+- Container Docker implantado em instâncias EC2.
 
 
 ---
